@@ -5,11 +5,13 @@ public class Asignatura {
     private String nombre;
     private String codigo;
     private int creditos;
+    private String docente;
 
-    public Asignatura(String nombre, String codigo, int creditos) {
+    public Asignatura(String nombre, String codigo, int creditos, String docente) {
         this.nombre = nombre;
         this.codigo = codigo;
         this.creditos = creditos;
+        this.docente = docente;
     }
 
     public String getNombre() {
@@ -36,12 +38,21 @@ public class Asignatura {
         this.creditos = creditos;
     }
 
+    public String getDocente() {
+        return docente;
+    }
+
+    public void setDocente(String docente) {
+        this.docente = docente;
+    }
+
     @Override
     public String toString() {
         return "Asignatura{" +
                 "nombre='" + nombre + '\'' +
                 ", codigo='" + codigo + '\'' +
                 ", creditos=" + creditos +
+                ", docente='" + docente + '\'' +
                 '}';
     }
 }
