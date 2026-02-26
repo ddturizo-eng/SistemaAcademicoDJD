@@ -62,8 +62,30 @@ public class Main
         System.out.println("0. Salir");
     }
 
-    // Métodos vacíos para que el código compile (se llenarán en las siguientes actividades)
-    public static void registrarEstudiante() {}
+
+    public static void registrarEstudiante() {
+        System.out.println("\n--- Registrar Nuevo Estudiante ---");
+
+        System.out.print("Ingrese código: ");
+        String codigo = leer.nextLine();
+
+        System.out.print("Ingrese nombre: ");
+        String nombre = leer.nextLine();
+
+        System.out.print("Ingrese apellido: ");
+        String apellido = leer.nextLine();
+
+        System.out.print("Ingrese edad: ");
+        int edad = leer.nextInt();
+
+        System.out.print("Ingrese semestre: ");
+        int semestre = leer.nextInt();
+        leer.nextLine();
+
+
+
+        System.out.println("¡Estudiante registrado con éxito (Simulado)!");
+    }
     public static void listarEstudiantes() {}
     public static void buscarEstudiante() {}
     public static void actualizarEstudiante() {}
