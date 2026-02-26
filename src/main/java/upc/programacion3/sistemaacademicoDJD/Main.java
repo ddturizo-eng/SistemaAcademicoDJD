@@ -119,7 +119,26 @@ public class Main
     }
     public static void actualizarEstudiante() {}
     public static void eliminarEstudiante() {}
-    public static void registrarAsignatura() {}
+
+    public static void registrarAsignatura() {
+
+        System.out.println("\n--- Registrar Nueva Asignatura ---");
+
+        System.out.print("Ingrese código de la asignatura: ");
+        String codigo = leer.nextLine();
+
+        System.out.print("Ingrese nombre de la asignatura: ");
+        String nombre = leer.nextLine();
+
+        System.out.print("Ingrese créditos de la asignatura: ");
+        int creditos = leer.nextInt();
+        leer.nextLine();
+
+        System.out.print("Ingrese el docente de la asignatura: ");
+        String docente = leer.nextLine();
+
+        System.out.println("¡Asignatura registrada con éxito (Simulado)!");
+    }
     public static void listarAsignaturas() {}
     public static void buscarAsignatura() {}
     public static void actualizarAsignatura() {}
