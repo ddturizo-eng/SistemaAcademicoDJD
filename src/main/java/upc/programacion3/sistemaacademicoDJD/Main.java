@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Main
 {
+
+    /*  defino estas listas como 'Object' por ahora porque las clases
+       Estudiante, Asignatura y Nota están siendo creadas Jorge y Florez en otras ramas.
+       Las cambiaré al tipo de dato correcto una vez realice los merges.
+    */
     private static ArrayList<Object> estudiantes = new ArrayList<>();
     private static ArrayList<Object> asignatura = new ArrayList<>();
     private static ArrayList<Object> notas =new ArrayList<>();
@@ -86,8 +91,32 @@ public class Main
 
         System.out.println("¡Estudiante registrado con éxito (Simulado)!");
     }
-    public static void listarEstudiantes() {}
-    public static void buscarEstudiante() {}
+    public static void listarEstudiantes() {
+        System.out.println("\n--- Lista de Estudiantes ---");
+        /* Uso un bucle simple. Ahora mismo solo imprimirá Strings, pero cuando
+           integre la clase Estudiante del Desarrollador 1(Florez), este código usará
+           automáticamente el método toString() que él defina.
+        */
+        if (estudiantes.isEmpty()) {
+            System.out.println("No hay registros en la lista.");
+        } else {
+            for (Object est : estudiantes) {
+                System.out.println(est);
+            }
+        }
+
+    }
+    public static void buscarEstudiante() {
+        System.out.println("\n--- Buscar Estudiante ---");
+        System.out.print("Ingrese el código a consultar: ");
+        String codigo = leer.nextLine();
+        /* Solo muestro un mensaje de confirmación. No puedo comparar 'codigo' con
+           'estudiante.getCodigo()' porque el método getCodigo aún no existe en mi rama.
+           Completaré esta lógica de comparación exacta después del primer Merge.
+        */
+        System.out.println("Buscando en la lista el código: " + codigo + "...");
+
+    }
     public static void actualizarEstudiante() {}
     public static void eliminarEstudiante() {}
     public static void registrarAsignatura() {}
