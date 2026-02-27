@@ -207,7 +207,29 @@ public class Main
 
 
     }
-    public static void eliminarAsignatura() {}
+    public static void eliminarAsignatura() {
+        System.out.println("\n---Eliminar Asignatura---");
+        leer.nextLine();
+        System.out.print("ingrese el nombre de la asignatura");
+        String nombre = leer.nextLine();
+        boolean existe = false;
+
+        for(Object a : asignatura) {
+            Asignatura obj = (Asignatura) a;
+            if (obj.getNombre().equalsIgnoreCase(nombre)) {
+                asignatura.remove(a);
+                System.out.println("Asignatura eliminada exitosamente.");
+                eliminada = true;
+                break;
+            }
+        }
+        if (!eliminada) {
+            System.out.println("No se encontró la asignatura: " + nombre);
+
+        }
+
+
+    }
     public static void registrarNota() {}
     public static void listarNotas() {}
     public static void buscarNota() {}
