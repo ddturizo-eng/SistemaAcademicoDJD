@@ -2,6 +2,7 @@ package upc.programacion3.sistemaacademicoDJD;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class Main
 {
 
@@ -21,7 +22,7 @@ public class Main
             mostrarMenu();
             System.out.print("Seleccione una opción: ");
             opcion = leer.nextInt();
-            leer.nextLine(); // Limpiar el buffer
+            leer.nextLine();
 
             switch (opcion) {
                 case 1: registrarEstudiante(); break;
@@ -117,7 +118,21 @@ public class Main
         System.out.println("Buscando en la lista el código: " + codigo + "...");
 
     }
-    public static void actualizarEstudiante() {}
+
+    public static void actualizarEstudiante() {
+        System.out.println("\n--- Actualizar Estudiante ---");
+        System.out.print("Ingrese el código del estudiante a editar: ");
+        String codigo = leer.nextLine();
+
+        /* Como todavía no puedo acceder a la lista de objetos 'Estudiante' reales
+           ni a sus métodos .getCodigo(), solo dejo planteada la intención.
+           Tras el primer merge
+        */
+
+        System.out.println("Buscando estudiante con código " + codigo + " para modificar...");
+        System.out.println("Nota: Los cambios se aplicarán cuando la clase Estudiante sea integrada.");
+
+    }
     public static void eliminarEstudiante() {}
 
     public static void registrarAsignatura() {
