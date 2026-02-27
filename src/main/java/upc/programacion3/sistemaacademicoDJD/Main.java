@@ -3,16 +3,12 @@ package upc.programacion3.sistemaacademicoDJD;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main
-{
+public class Main {
 
-    /*  defino estas listas como 'Object' por ahora porque las clases
-       Estudiante, Asignatura y Nota están siendo creadas Jorge y Florez en otras ramas.
-       Las cambiaré al tipo de dato correcto una vez realice los merges.
-    */
-    private static ArrayList<Object> estudiantes = new ArrayList<>();
-    private static ArrayList<Object> asignatura = new ArrayList<>();
-    private static ArrayList<Object> notas =new ArrayList<>();
+
+    private static ArrayList<Estudiante> estudiantes = new ArrayList<>();
+    private static ArrayList<Asignatura> asignaturas = new ArrayList<>();
+    private static ArrayList<Object> notas = new ArrayList<>(); // Se actualizará cuando Jorge termine la clase Nota
 
     private static Scanner leer = new Scanner(System.in);
 
@@ -68,55 +64,53 @@ public class Main
         System.out.println("0. Salir");
     }
 
+    // --- MÉTODOS DE ESTUDIANTE ---
 
     public static void registrarEstudiante() {
         System.out.println("\n--- Registrar Nuevo Estudiante ---");
-
         System.out.print("Ingrese código: ");
         String codigo = leer.nextLine();
-
         System.out.print("Ingrese nombre: ");
         String nombre = leer.nextLine();
-
         System.out.print("Ingrese apellido: ");
         String apellido = leer.nextLine();
-
         System.out.print("Ingrese edad: ");
         int edad = leer.nextInt();
-
         System.out.print("Ingrese semestre: ");
         int semestre = leer.nextInt();
         leer.nextLine();
 
-
-
-        System.out.println("¡Estudiante registrado con éxito (Simulado)!");
+        // Uso del constructor de Florez: (codigo, nombre, apellido, edad, semestre)
+        Estudiante nuevo = new Estudiante(codigo, nombre, apellido, edad, semestre);
+        estudiantes.add(nuevo);
+        System.out.println("¡Estudiante registrado con éxito!");
     }
+
     public static void listarEstudiantes() {
         System.out.println("\n--- Lista de Estudiantes ---");
-        /* Uso un bucle simple. Ahora mismo solo imprimirá Strings, pero cuando
-           integre la clase Estudiante del Desarrollador 1(Florez), este código usará
-           automáticamente el método toString() que él defina.
-        */
         if (estudiantes.isEmpty()) {
             System.out.println("No hay registros en la lista.");
         } else {
-            for (Object est : estudiantes) {
+            for (Estudiante est : estudiantes) {
                 System.out.println(est);
             }
         }
-
     }
+
     public static void buscarEstudiante() {
         System.out.println("\n--- Buscar Estudiante ---");
         System.out.print("Ingrese el código a consultar: ");
         String codigo = leer.nextLine();
-        /* Solo muestro un mensaje de confirmación. No puedo comparar 'codigo' con
-           'estudiante.getCodigo()' porque el método getCodigo aún no existe en mi rama.
-           Completaré esta lógica de comparación exacta después del primer Merge.
-        */
-        System.out.println("Buscando en la lista el código: " + codigo + "...");
 
+        boolean encontrado = false;
+        for (Estudiante est : estudiantes) {
+            if (est.getCodigo().equals(codigo)) {
+                System.out.println("Resultado: " + est);
+                encontrado = true;
+                break;
+            }
+        }
+        if (!encontrado) System.out.println("Estudiante no encontrado.");
     }
 
     public static void actualizarEstudiante() {
@@ -124,63 +118,86 @@ public class Main
         System.out.print("Ingrese el código del estudiante a editar: ");
         String codigo = leer.nextLine();
 
-        /* Como todavía no puedo acceder a la lista de objetos 'Estudiante' reales
-           ni a sus métodos .getCodigo(), solo dejo planteada la intención.
-           Tras el primer merge
-        */
-
-        System.out.println("Buscando estudiante con código " + codigo + " para modificar...");
-        System.out.println("Nota: Los cambios se aplicarán cuando la clase Estudiante sea integrada.");
-
+        for (Estudiante est : estudiantes) {
+            if (est.getCodigo().equals(codigo)) {
+                System.out.print("Nuevo nombre: ");
+                est.setNombre(leer.nextLine());
+                System.out.print("Nuevo apellido: ");
+                est.setApellido(leer.nextLine());
+                System.out.println("¡Datos actualizados!");
+                return;
+            }
+        }
+        System.out.println("No se encontró el estudiante.");
     }
-    public static void eliminarEstudiante() {}
 
-    public static void registrarAsignatura() {
-
-        System.out.println("\n--- Registrar Nueva Asignatura ---");
-
-        System.out.print("Ingrese código de la asignatura: ");
+    // Actividad 6: Implementación de eliminación física
+    public static void eliminarEstudiante() {
+        System.out.println("\n--- Eliminar Estudiante ---");
+        System.out.print("Ingrese el código del estudiante a borrar: ");
         String codigo = leer.nextLine();
 
-        System.out.print("Ingrese nombre de la asignatura: ");
-        String nombre = leer.nextLine();
+        boolean eliminado = estudiantes.removeIf(e -> e.getCodigo().equals(codigo));
 
-        System.out.print("Ingrese créditos de la asignatura: ");
+        if (eliminado) {
+            System.out.println("¡Estudiante eliminado con éxito!");
+        } else {
+            System.out.println("No se encontró ningún estudiante con ese código.");
+        }
+    }
+
+    // --- MÉTODOS DE ASIGNATURA ---
+
+    public static void registrarAsignatura() {
+        System.out.println("\n--- Registrar Nueva Asignatura ---");
+        System.out.print("Ingrese código: ");
+        String codigo = leer.nextLine();
+        System.out.print("Ingrese nombre: ");
+        String nombre = leer.nextLine();
+        System.out.print("Ingrese créditos: ");
         int creditos = leer.nextInt();
         leer.nextLine();
-
-        System.out.print("Ingrese el docente de la asignatura: ");
+        System.out.print("Ingrese docente: ");
         String docente = leer.nextLine();
 
-        System.out.println("¡Asignatura registrada con éxito (Simulado)!");
+        // Constructor de Jorge: (nombre, codigo, creditos, docente)
+        Asignatura nuevaAsig = new Asignatura(nombre, codigo, creditos, docente);
+        asignaturas.add(nuevaAsig);
+        System.out.println("¡Asignatura registrada con éxito!");
     }
+
     public static void listarAsignaturas() {
-        System.out.println("--- \n Lista de Asignaturas ---");
-        if (asignatura.isEmpty()) {
-            System.out.println("No hay registros en la lista.");
-        }else{
-            for (Object a : asignatura) {
+        System.out.println("\n--- Lista de Asignaturas ---");
+        if (asignaturas.isEmpty()) {
+            System.out.println("No hay asignaturas registradas.");
+        } else {
+            for (Asignatura a : asignaturas) {
                 System.out.println(a);
             }
         }
     }
+
     public static void buscarAsignatura() {
         System.out.println("\n--- Buscar Asignatura ---");
-        System.out.print("Ingrese el codigo de la asignatura");
+        System.out.print("Ingrese el código: ");
         String codigo = leer.nextLine();
 
-        System.out.println("Buscando en la lista la asignatura: " + codigo + "...");
-
-
+        for (Asignatura a : asignaturas) {
+            if (a.getCodigo().equals(codigo)) {
+                System.out.println("Encontrada: " + a);
+                return;
+            }
+        }
+        System.out.println("Asignatura no encontrada.");
     }
-    public static void actualizarAsignatura() {}
-    public static void eliminarAsignatura() {}
+
+    public static void actualizarAsignatura() { /* Daniel Florez debe completar */ }
+    public static void eliminarAsignatura() { /* Daniel Florez debe completar */ }
+
+    // --- MÉTODOS DE NOTAS (Jorge debe completar) ---
     public static void registrarNota() {}
     public static void listarNotas() {}
     public static void buscarNota() {}
     public static void actualizarNota() {}
     public static void eliminarNota() {}
 }
-
-
-
