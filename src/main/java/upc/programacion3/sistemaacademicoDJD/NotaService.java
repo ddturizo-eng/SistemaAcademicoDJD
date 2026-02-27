@@ -44,4 +44,16 @@ public class NotaService {
 
         return false;
     }
+
+    public boolean eliminarNota(Estudiante estudiante, Asignatura asignatura) {
+
+        Nota nota = buscarNota(estudiante, asignatura);
+
+        if (nota != null) {
+            listaNotas.remove(nota);
+            return true;
+        }
+
+        return false;
+    }
 }
