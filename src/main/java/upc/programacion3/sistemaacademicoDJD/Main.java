@@ -7,7 +7,6 @@ public class Main {
 
     private static ArrayList<Estudiante> estudiantes = new ArrayList<>();
     private static ArrayList<Asignatura> asignaturas = new ArrayList<>();
-    // Corrección: El tipo debe ser 'Nota' (singular) según la clase de Jorge
     private static ArrayList<Nota> notas = new ArrayList<>();
 
     private static Scanner leer = new Scanner(System.in);
@@ -43,19 +42,17 @@ public class Main {
     }
 
     public static void mostrarMenu() {
-        System.out.println("\n--- SISTEMA ACADÉMICO UPC ---");
+        System.out.println("\n--- Sistema Académico ---");
         System.out.println("1. Registrar Estudiante");
         System.out.println("2. Listar Estudiantes");
         System.out.println("3. Buscar Estudiante");
         System.out.println("4. Actualizar Estudiante");
         System.out.println("5. Eliminar Estudiante");
-        System.out.println("-----------------------------");
         System.out.println("6. Registrar Asignatura");
         System.out.println("7. Listar Asignaturas");
         System.out.println("8. Buscar Asignatura");
         System.out.println("9. Actualizar Asignatura");
         System.out.println("10. Eliminar Asignatura");
-        System.out.println("-----------------------------");
         System.out.println("11. Registrar Nota");
         System.out.println("12. Listar Notas");
         System.out.println("13. Buscar Nota");
@@ -147,7 +144,7 @@ public class Main {
     // --- MÉTODOS DE ASIGNATURA ---
 
     public static void registrarAsignatura() {
-        System.out.println("\n--- Registrar Nueva Asignatura ---");
+        System.out.println("\n--- Rstrar Nueva Asignatura ---");
         System.out.print("Ingrese código: ");
         String codigo = leer.nextLine();
         System.out.print("Ingrese nombre: ");
