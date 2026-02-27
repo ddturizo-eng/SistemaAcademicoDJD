@@ -158,7 +158,40 @@ public class Main
 
 
     }
-    public static void actualizarAsignatura() {}
+
+    public static void actualizarAsignatura() {
+        System.out.println("\n--- Actualizar Asignatura ---");
+        leer.nextLine();
+        System.out.print("Ingrese el nombre de  la asignatura: ");
+        String nombre = leer.nextLine();
+
+        boolean existe = false;
+        for (Object a : asignatura) {
+            Asignatura obj = (Asignatura) a;
+            if (obj.getNombre().equalsIgnoreCase(nombre)) {
+
+                System.out.print("Ingrese nuevo código: ");
+                obj.setCodigo(leer.nextLine());
+                System.out.print("Ingrese nuevo nombre: ");
+                obj.setNombre(leer.nextLine());
+                System.out.print("Ingrese nuevos créditos: ");
+                obj.setCreditos(leer.nextInt());
+                System.out.print("ingrese nombre del docente");
+                obj.setDocente(leer.nextInt());
+
+                System.out.println("Asignatura actualizada: " + obj);
+                existe = true;
+                break;
+            }
+        }
+        if (!existe) {
+            System.out.println("No se encontró la asignatura: " + nombre);
+        }
+
+
+
+
+    }
     public static void eliminarAsignatura() {}
     public static void registrarNota() {}
     public static void listarNotas() {}
