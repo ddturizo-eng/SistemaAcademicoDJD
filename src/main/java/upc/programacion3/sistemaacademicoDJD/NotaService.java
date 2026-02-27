@@ -10,8 +10,24 @@ public class NotaService {
     public NotaService() {
         this.listaNotas = new ArrayList<>();
     }
-
+    
     public void registrarNota(Nota nota) {
         listaNotas.add(nota);
+    }
+
+    public List<Nota> listarNotas() {
+        return listaNotas;
+    }
+
+    public Nota buscarNota(Estudiante estudiante, Asignatura asignatura) {
+
+        for (Nota nota : listaNotas) {
+            if (nota.getEstudiante().equals(estudiante)
+                    && nota.getAsignatura().equals(asignatura)) {
+                return nota;
+            }
+        }
+
+        return null;
     }
 }
