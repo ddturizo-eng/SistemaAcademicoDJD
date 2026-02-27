@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class Main {
 
-
     private static ArrayList<Estudiante> estudiantes = new ArrayList<>();
     private static ArrayList<Asignatura> asignaturas = new ArrayList<>();
-    private static ArrayList<Object> notas = new ArrayList<>(); // Se actualizará cuando Jorge termine la clase Nota
+    // Corrección: El tipo debe ser 'Nota' (singular) según la clase de Jorge
+    private static ArrayList<Nota> notas = new ArrayList<>();
 
     private static Scanner leer = new Scanner(System.in);
 
@@ -80,7 +80,6 @@ public class Main {
         int semestre = leer.nextInt();
         leer.nextLine();
 
-        // Uso del constructor de Florez: (codigo, nombre, apellido, edad, semestre)
         Estudiante nuevo = new Estudiante(codigo, nombre, apellido, edad, semestre);
         estudiantes.add(nuevo);
         System.out.println("¡Estudiante registrado con éxito!");
@@ -131,7 +130,6 @@ public class Main {
         System.out.println("No se encontró el estudiante.");
     }
 
-    // Actividad 6: Implementación de eliminación física
     public static void eliminarEstudiante() {
         System.out.println("\n--- Eliminar Estudiante ---");
         System.out.print("Ingrese el código del estudiante a borrar: ");
@@ -160,7 +158,6 @@ public class Main {
         System.out.print("Ingrese docente: ");
         String docente = leer.nextLine();
 
-        // Constructor de Jorge: (nombre, codigo, creditos, docente)
         Asignatura nuevaAsig = new Asignatura(nombre, codigo, creditos, docente);
         asignaturas.add(nuevaAsig);
         System.out.println("¡Asignatura registrada con éxito!");
@@ -191,64 +188,6 @@ public class Main {
         System.out.println("Asignatura no encontrada.");
     }
 
-
-    public static void actualizarAsignatura() {
-        System.out.println("\n--- Actualizar Asignatura ---");
-        leer.nextLine();
-        System.out.print("Ingrese el nombre de  la asignatura: ");
-        String nombre = leer.nextLine();
-
-        boolean existe = false;
-        for (Object a : asignatura) {
-            Asignatura obj = (Asignatura) a;
-            if (obj.getNombre().equalsIgnoreCase(nombre)) {
-
-                System.out.print("Ingrese nuevo código: ");
-                obj.setCodigo(leer.nextLine());
-                System.out.print("Ingrese nuevo nombre: ");
-                obj.setNombre(leer.nextLine());
-                System.out.print("Ingrese nuevos créditos: ");
-                obj.setCreditos(leer.nextInt());
-                System.out.print("ingrese nombre del docente");
-                obj.setDocente(leer.nextInt());
-
-                System.out.println("Asignatura actualizada: " + obj);
-                existe = true;
-                break;
-            }
-        }
-        if (!existe) {
-            System.out.println("No se encontró la asignatura: " + nombre);
-        }
-
-
-
-
-    }
-    public static void eliminarAsignatura() {
-        System.out.println("\n---Eliminar Asignatura---");
-        leer.nextLine();
-        System.out.print("ingrese el nombre de la asignatura");
-        String nombre = leer.nextLine();
-        boolean existe = false;
-
-        for(Object a : asignatura) {
-            Asignatura obj = (Asignatura) a;
-            if (obj.getNombre().equalsIgnoreCase(nombre)) {
-                asignatura.remove(a);
-                System.out.println("Asignatura eliminada exitosamente.");
-                eliminada = true;
-                break;
-            }
-        }
-        if (!eliminada) {
-            System.out.println("No se encontró la asignatura: " + nombre);
-
-        }
-
-
-    }
-
     public static void actualizarAsignatura() {
         System.out.println("\n--- Actualizar Asignatura ---");
         System.out.print("Ingrese el código de la asignatura a editar: ");
@@ -260,7 +199,7 @@ public class Main {
                 asig.setNombre(leer.nextLine());
                 System.out.print("Nuevos créditos: ");
                 asig.setCreditos(leer.nextInt());
-                leer.nextLine(); // Limpiar buffer
+                leer.nextLine();
                 System.out.print("Nuevo docente: ");
                 asig.setDocente(leer.nextLine());
 
@@ -270,12 +209,12 @@ public class Main {
         }
         System.out.println("No se encontró la asignatura con código: " + codigo);
     }
+
     public static void eliminarAsignatura() {
         System.out.println("\n--- Eliminar Asignatura ---");
         System.out.print("Ingrese el código de la asignatura a borrar: ");
         String codigo = leer.nextLine();
 
-        // Usamos removeIf para que sea consistente con tu método de Estudiantes
         boolean eliminado = asignaturas.removeIf(asig -> asig.getCodigo().equalsIgnoreCase(codigo));
 
         if (eliminado) {
@@ -284,6 +223,7 @@ public class Main {
             System.out.println("No se encontró la asignatura con código: " + codigo);
         }
     }
+
     // --- MÉTODOS DE NOTAS (Jorge debe completar) ---
 
     public static void registrarNota() {}
