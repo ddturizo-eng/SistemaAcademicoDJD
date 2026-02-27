@@ -10,7 +10,7 @@ public class NotaService {
     public NotaService() {
         this.listaNotas = new ArrayList<>();
     }
-    
+
     public void registrarNota(Nota nota) {
         listaNotas.add(nota);
     }
@@ -29,5 +29,19 @@ public class NotaService {
         }
 
         return null;
+    }
+
+    public boolean actualizarNota(Estudiante estudiante,
+                                  Asignatura asignatura,
+                                  double nuevoValor) {
+
+        Nota nota = buscarNota(estudiante, asignatura);
+
+        if (nota != null) {
+            nota.setValor(nuevoValor);
+            return true;
+        }
+
+        return false;
     }
 }
