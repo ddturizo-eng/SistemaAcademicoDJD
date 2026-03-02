@@ -336,7 +336,7 @@ public class Main {
 
         System.out.println("Nota no encontrada.");
     }
-
+// Prueba commit 
     public static void actualizarNota() {
         System.out.println("\n--- Actualizar Nota ---");
 
